@@ -16,7 +16,7 @@ export class Player {
 	constructor (private change:ChangeDetectorRef) {
 
 		this.player = new Radio.Icecast({
-			path: 'http://stream.cor.insanityradio.com:8000/insanity_test.mp3'
+			path: 'https://insanityradio.com/listen/get_current_stream.mp3'
 		});
 
 		this.presentationDelay = 5000;
