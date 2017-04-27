@@ -1,0 +1,21 @@
+<ons-toolbar>
+	<div class="left">
+		<img src="../public/resources/cans.svg" height=25 />
+	</div>
+	<div class="center">
+	</div>
+	<div class="right">
+		<a class="share email" href="#"></a>
+		<a class="share twitter" href="#"></a>
+		<a class="share facebook" href="#"></a>
+		<a *ngIf="browser" class="share app" href="#play"><i class="fa fa-android" aria-hidden="true"></i></a>
+		<a *ngIf="browser" class="share app" href="#ios"><i class="fa fa-apple" aria-hidden="true"></i></a>
+		<a></a>
+	</div>
+</ons-toolbar>
+
+<div class="content">
+	<player #player></player>
+	<metadata #metadata [player]="player" [artwork]="artwork" [presentationDelay]="player.presentationDelay" class="row"></metadata>
+	<artwork #artwork [url]="metadata.data.nowPlaying.album_art"></artwork>
+</div>

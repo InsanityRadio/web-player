@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.content {
+	font-family: "Josefin Sans", "Helvetica Neue", "Arial", "Verdana", sans-serif;
+	background: #000;
+}
+
+ons-toolbar {
+	background: #222;
+	color: #999;
+	height: 50px;
+}
+
+ons-toolbar img {
+	opacity: 0.3;
+	vertical-align: middle;
+	padding: 8px 5px 5px 10px;
+}
+
+.navigation-bar__center {
+	width: 0px !important;
+}
+
+.navigation-bar__right {
+	width: auto;
+	float: right;
+}
+
+a.share, input.share, a.contrast {
+	border: none;
+	color: #F00;
+	float: right;
+	background: #000;
+	position: relative;
+	width: 30px;
+	height: 50px;
+	transition: background-color 0.08s;
+}
+a.share.facebook {
+	background: #3C5A9A url(./resources/fb.svg) no-repeat center center;
+	background-size: 18px;
+}
+
+a.share.facebook:hover {
+	background-color: #264380;
+}
+
+a.share.twitter {
+	background: #4099FF url(./resources/tw.svg) no-repeat center center;
+	background-size: 17px;
+}
+
+a.share.twitter:hover {
+	background-color: #207BE3;
+}
+
+a.share.email {
+	background: #C00 url(./resources/e.svg) no-repeat center center;
+	background-size: 15px;
+}
+
+a.share.email:hover {
+	background-color: #A00;
+}
+
+a.share.app {
+	background-color: #222;
+	text-align: center;
+	color: #FFF;
+}
+a.share.app i {
+	position: relative;
+	top: 2px;
+}
+a.share.app:hover {
+	background-color: #000;
+}
+
+.row {
+	background: #222;
+	color: #FFF;
+	display: block;
+	font-size: 11pt;
+	padding: 12px 10px 10px;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+artwork {
+	display: block;
+
+}

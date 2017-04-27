@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.insanityradio.logs" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <name>com.insanityradio.logs</name>
+    <description />
+    <author />
+    <access origin="*" />
+    <content src="index.html" />
+    <preference name="ErrorUrl" value="" />
+    <icon density="ldpi" src="/res/android/icon/ldpi.png" />
+    <icon density="mdpi" src="/res/android/icon/mdpi.png" />
+    <icon density="hdpi" src="/res/android/icon/hdpi.png" />
+    <icon density="xhdpi" src="/res/android/icon/xhdpi.png" />
+    <icon density="xxhdpi" src="/res/android/icon/xxhdpi.png" />
+    <icon density="xxxhdpi" src="/res/android/icon/xxxhdpi.png" />
+    <splash density="port-ldpi" src="/res/android/screen/splash-port-ldpi.9.png" />
+    <splash density="port-mdpi" src="/res/android/screen/splash-port-mdpi.9.png" />
+    <splash density="port-hdpi" src="/res/android/screen/splash-port-hdpi.9.png" />
+    <splash density="port-xhdpi" src="/res/android/screen/splash-port-xhdpi.9.png" />
+    <splash density="port-xxhdpi" src="/res/android/screen/splash-port-xxhdpi.9.png" />
+    <splash density="port-xxxhdpi" src="/res/android/screen/splash-port-xxxhdpi.9.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="BackgroundColor" value="0xffffffff" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="monaca:WebViewEngine" value="default" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="Orientation" value="default" />
+    <preference name="monaca:DisableCookie" value="false" />
+    <preference name="monaca:AndroidIsPackageNameSeparate" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="FadeSplashScreenDuration" value="250" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="TopActivityIndicator" value="gray" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2" />
+</widget>

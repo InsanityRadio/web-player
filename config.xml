@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.insanityradio.logs" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>com.insanityradio.logs</name>
+    <description />
+    <author />
+    <access origin="*" />
+    <content src="index.html" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="BackgroundColor" value="0xffffffff" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="ErrorUrl" value="" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="monaca:WebViewEngine" value="default" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="Orientation" value="default" />
+    <preference name="monaca:DisableCookie" value="false" />
+    <preference name="monaca:AndroidIsPackageNameSeparate" value="false" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="FadeSplashScreenDuration" value="250" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="TopActivityIndicator" value="gray" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2" />
+    <platform name="ios">
+        <icon height="57" src="/res/ios/icon/icon.png" width="57" />
+        <icon height="114" src="/res/ios/icon/icon@2x.png" width="114" />
+        <icon height="72" src="/res/ios/icon/icon-72.png" width="72" />
+        <icon height="144" src="/res/ios/icon/icon-72@2x.png" width="144" />
+        <icon height="60" src="/res/ios/icon/icon-60.png" width="60" />
+        <icon height="120" src="/res/ios/icon/icon-60@2x.png" width="120" />
+        <icon height="180" src="/res/ios/icon/icon-60@3x.png" width="180" />
+        <icon height="76" src="/res/ios/icon/icon-76.png" width="76" />
+        <icon height="152" src="/res/ios/icon/icon-76@2x.png" width="152" />
+        <icon height="40" src="/res/ios/icon/icon-40.png" width="40" />
+        <icon height="80" src="/res/ios/icon/icon-40@2x.png" width="80" />
+        <icon height="50" src="/res/ios/icon/icon-50.png" width="50" />
+        <icon height="100" src="/res/ios/icon/icon-50@2x.png" width="100" />
+        <icon height="29" src="/res/ios/icon/icon-small.png" width="29" />
+        <icon height="58" src="/res/ios/icon/icon-small@2x.png" width="58" />
+        <icon height="87" src="/res/ios/icon/icon-small@3x.png" width="87" />
+        <icon height="167" src="/res/ios/icon/icon-83.5@2x~ipad.png" width="167" />
+        <splash height="480" src="/res/ios/screen/Default~iphone.png" width="320" />
+        <splash height="960" src="/res/ios/screen/Default@2x~iphone.png" width="640" />
+        <splash height="1136" src="/res/ios/screen/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="/res/ios/screen/Default-667h.png" width="750" />
+        <splash height="2208" src="/res/ios/screen/Default-736h.png" width="1242" />
+        <splash height="1242" src="/res/ios/screen/Default-Landscape-736h.png" width="2208" />
+        <splash height="1024" src="/res/ios/screen/Default-Portrait~ipad.png" width="768" />
+        <splash height="768" src="/res/ios/screen/Default-Landscape~ipad.png" width="1024" />
+        <splash height="2048" src="/res/ios/screen/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="1536" src="/res/ios/screen/Default-Landscape@2x~ipad.png" width="2048" />
+        <config-file parent="CFBundleLocalizations" platform="ios" target="*-Info.plist">
+            <array>
+                <string>en</string>
+            </array>
+        </config-file>
+    </platform>
+    <platform name="android">
+        <icon density="ldpi" src="/res/android/icon/ldpi.png" />
+        <icon density="mdpi" src="/res/android/icon/mdpi.png" />
+        <icon density="hdpi" src="/res/android/icon/hdpi.png" />
+        <icon density="xhdpi" src="/res/android/icon/xhdpi.png" />
+        <icon density="xxhdpi" src="/res/android/icon/xxhdpi.png" />
+        <icon density="xxxhdpi" src="/res/android/icon/xxxhdpi.png" />
+        <splash density="port-ldpi" src="/res/android/screen/splash-port-ldpi.9.png" />
+        <splash density="port-mdpi" src="/res/android/screen/splash-port-mdpi.9.png" />
+        <splash density="port-hdpi" src="/res/android/screen/splash-port-hdpi.9.png" />
+        <splash density="port-xhdpi" src="/res/android/screen/splash-port-xhdpi.9.png" />
+        <splash density="port-xxhdpi" src="/res/android/screen/splash-port-xxhdpi.9.png" />
+        <splash density="port-xxxhdpi" src="/res/android/screen/splash-port-xxxhdpi.9.png" />
+    </platform>
+    <platform name="windows">
+        <icon src="/res/winrt/icon/package_logo_winrt.png" target="StoreLogo" />
+        <icon src="/res/winrt/icon/app_logo_winrt.png" target="Square150x150Logo" />
+        <icon src="/res/winrt/icon/app_small_logo_winrt.png" target="Square30x30Logo" />
+        <icon src="/res/winrt/icon/app_tile_wide_logo_winrt.png" target="Wide315x150Logo" />
+        <splash height="300" src="/res/winrt/screen/app_splash_screen_winrt.png" width="620" />
+    </platform>
+    <platform name="chrome">
+        <icon height="128" src="/platforms/chrome/icon.png" width="128" />
+    </platform>
+    <engine name="ios" spec="~4.3.1" />
+    <engine name="android" spec="~6.1.2" />
+    <engine name="browser" spec="~4.1.0" />
+</widget>

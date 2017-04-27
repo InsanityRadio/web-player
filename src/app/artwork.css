@@ -1,0 +1,13 @@
+.content {
+	background: #333;
+	background-size: cover;
+	height: 100vw;
+	max-height: calc(100vh - 235px);
+	overflow: hidden;
+	text-align: center;
+	width: 100vw;
+}
+img {
+	box-shadow: 0px 0px 3px #000;
+	height: 100%;
+}

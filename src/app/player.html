@@ -1,0 +1,10 @@
+<div class="content">
+	<img id="logo" src="../public/resources/vec.svg" height=70 />
+	<div id="controls">
+		<button id="go" (click)="toggle()">
+			<i *ngIf="!playing() && !buffering()" class="fa fa-play"></i>
+			<i *ngIf="buffering()" class="fa fa-ellipsis-h"></i>
+			<i *ngIf="!buffering() && playing()" class="fa fa-pause"></i>
+		</button>
+	</div>
+</div>
