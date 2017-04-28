@@ -42,7 +42,8 @@ export module Radio {
 		 * {
 		     nowPlaying: {
 			  song: str,
-			  artist: str
+			  artist: str,
+			  album_art: str|null
 		     },
 		     currentShow: {
 			  showName: str,

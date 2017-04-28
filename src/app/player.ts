@@ -19,7 +19,9 @@ export class Player {
 			path: 'https://insanityradio.com/listen/get_current_stream.mp3'
 		});
 
-		this.presentationDelay = 5000;
+		var webkit = 'WebkitAppearance' in document.documentElement.style;
+
+		this.presentationDelay = webkit ? 8000 : 5000;
 
 		this.player.stateChange(() => {
 			console.log("State Change!")
