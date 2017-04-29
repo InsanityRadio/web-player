@@ -77,7 +77,9 @@ export module Radio {
 			this.audio = null;
 
 			var webkit = 'WebkitAppearance' in document.documentElement.style;
-			this.presentationDelay = webkit ? 8000 : 5000;
+			var gecko = 'MozAppearance' in document.documentElement.style;
+
+			this.presentationDelay = webkit ? 10000 : (gecko ? 3000 : 5000);
 		}
 
 		play () {
@@ -227,7 +229,10 @@ export module Radio {
 			this.sub = new NchanSubscriber('https://webapi.insanityradio.com/subscribe?id=1', {
 				'reconnect': undefined
 			})
-			this.sub.on('message', (message) => this.update(message, callback))
+			this.sub.on('message', (message) => this.update(message, callback));
+
+			// this.sub.on('error', (message) => this.sub.start());
+			// this.sub.on('disconnect', (message) => this.sub.start());
 
 			this.sub.start();
 

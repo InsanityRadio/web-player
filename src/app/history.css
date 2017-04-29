@@ -1,0 +1,45 @@
+.history {
+	display: block;
+	flex: 0;
+	min-width: 400px;
+	overflow-y: scroll;
+	height: 100vw;
+	max-height: calc(100vh - 235px);
+	font-family: "Montserrat", sans-serif;
+	font-size: 10pt;
+}
+
+.history table {
+	width: 100% !important;
+	min-width: 100%;
+}
+
+.history .song-container {
+	padding: 10px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.history .song-container:hover {
+	background: #F9F9F9;
+}
+
+.history table td.a {
+	width: 40px !important;
+}
+
+.history table td.b {
+	font-weight: 500;
+}
+
+.history table td.c {
+	width: 30px !important;
+	text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+	.history {
+		min-width: auto;
+		width: 100%;
+	}
+}

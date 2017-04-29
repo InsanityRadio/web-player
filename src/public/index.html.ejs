@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- This file is the template for "www/index.html". Modify it to fit your needs -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; media-src *; connect-src ws://webapi.insanityradio.com wss://webapi.insanityradio.com">
+	<head>
+		<title>Listen | Insanity Radio 103.2FM</title>
 
-  <!-- The following EJS lines include the necessary CSS and JS
-  from Monaca (cordova.js/ loader.js) in production mode -->
-<% for (var dep in htmlWebpackPlugin.options.externalJS) { %>
-  <script type="text/javascript" src="<%= htmlWebpackPlugin.options.externalJS[dep] %>"></script><% } %>
-<% for (var dep in htmlWebpackPlugin.options.externalCSS) { %>
-  <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.externalCSS[dep] %>"><% } %>
-</head>
-<body>
-  <app></app>
-</body>
+		<meta property="og:title" content="Listen to Insanity" />
+		<meta property="og:type" content="music.radio_station" />
+		<meta property="og:music:creator" content="Insanity Radio 103.2FM" />
+		<meta property="og:image" content="https://insanityradio.com/res/og_listen.png" />
+		<meta property="og:image:height" content="768" />
+
+		<meta property="og:site_name" content="Insanity Radio 103.2FM" />
+		<meta property="og:url" content="http://insanityradio.com/listen/" />
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; media-src *; connect-src ws://webapi.insanityradio.com wss://webapi.insanityradio.com http://localhost:8080 ws://localhost:8080">
+
+	<% for (var dep in htmlWebpackPlugin.options.externalJS) { %>
+		<script type="text/javascript" src="<%= htmlWebpackPlugin.options.externalJS[dep] %>"></script><% } %>
+	<% for (var dep in htmlWebpackPlugin.options.externalCSS) { %>
+		<link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.externalCSS[dep] %>"><% } %>
+	</head>
+	<body>
+		<app></app>
+	</body>
 </html>

@@ -13,6 +13,7 @@ import {Artwork} from './app/artwork';
 import {Shell} from './app/shell';
 import {Player} from './app/player';
 import {Metadata} from './app/metadata';
+import {SongHistory} from './app/history';
 
 console.log(process);
 
@@ -31,7 +32,8 @@ if (process.env.NODE_ENV === 'production') {
 		Shell,
 		Player,
 		Metadata,
-		Artwork
+		Artwork,
+		SongHistory
 	],
 	entryComponents: [
 		Shell,

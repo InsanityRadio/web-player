@@ -19,8 +19,6 @@
 	<metadata #metadata [player]="player" [artwork]="artwork" [presentationDelay]="player.presentationDelay" class="row"></metadata>
 	<div class="flexbox">
 		<artwork #artwork [url]="metadata.data.nowPlaying.album_art"></artwork>
-		<div class="history">
-			Track History
-		</div>
+		<history #history [metadata]="metadata"></history>
 	</div>
 </div>

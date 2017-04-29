@@ -1,0 +1,19 @@
+<div class="history">
+	<div class="song-container" *ngFor="let row of history()">
+		<table>
+			<tr>
+				<td class="a" rowspan=2>{{ row.now | date:'HH:mm' }}</td>
+				<td class="b">{{ row.nowPlaying.song }}</td>
+				<td class="c" rowspan=2>
+					<button *ngIf="row.nowPlaying.external_urls.spotify !== undefined" class="button" (click)="open(row, 'spotify')">
+						<i class="fa fa-spotify"></i>
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>{{ row.nowPlaying.artist }}</td>
+			</tr>
+
+		</table>
+	</div>
+</div>

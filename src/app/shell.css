@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Montserrat:500,400');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 .content {
@@ -91,6 +91,10 @@ a.share.app:hover {
 
 .flexbox {
 	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
 }
 
 artwork {
@@ -98,19 +102,8 @@ artwork {
 	flex: 1;
 }
 
-.history {
-	display: block;
-	flex: 0;
-	width: 400px;
-	min-width: 400px;
-}
-
 @media screen and (max-width: 500px) {
 	.flexbox {
 		display: block;
-	}
-	.history {
-		min-width: auto;
-		width: 100%;
 	}
 }

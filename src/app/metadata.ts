@@ -35,7 +35,7 @@ export class Metadata {
 	};
 
 	protected data:any = {};
-	protected history:any = {};
+	history:any = {};
 
 	private interval:number = 8000;
 	private total:number = 10;
