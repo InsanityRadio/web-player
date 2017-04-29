@@ -3,13 +3,13 @@ declare var Audio:any;
 
 var NchanSubscriber = require('../NchanSubscriber.js');
 
-console.log(NchanSubscriber)
-
 export module Radio {
 
 	export abstract class Player {
 
 		protected stateChangeListeners:Array<(player:Player) => void> = [];
+
+		presentationDelay : number;
 
 		constructor (protected options:any) {}
 
@@ -75,6 +75,9 @@ export module Radio {
 		constructor (options:Object) {
 			super(options);
 			this.audio = null;
+
+			var webkit = 'WebkitAppearance' in document.documentElement.style;
+			this.presentationDelay = webkit ? 8000 : 5000;
 		}
 
 		play () {
@@ -113,6 +116,77 @@ export module Radio {
 
 		toggle () {
 			this.playing ? this.stop() : this.play();
+		}
+
+	}
+
+	export class VideoElement extends Player {
+
+		private audio:any;
+		private played:boolean = false;
+
+		constructor (options:Object) {
+			super(options);
+			this.audio = null;
+			this.presentationDelay = 15000;
+		}
+
+		play () {
+			var path = this.options.manifest + (this.options.manifest.indexOf("?") != -1 ? '&' : '?') + new Date().getTime();
+			this.played = false;
+
+			if(this.audio != null)
+				this.stop();
+
+			// this.audio = new Audio(path);
+			this.audio = document.createElement('video');
+			this.audio.src = path;
+			this.audio.autoPlay = true;
+			this.audio.setAttribute('playsinline', '1');
+
+			this.audio.addEventListener("playing", () => this.handleStateChange());
+			this.audio.addEventListener("pause", () => this.handleStateChange());
+			this.audio.addEventListener("stalled", () => this.handleStateChange());
+			this.audio.play();
+
+			console.log('hello!!!')
+
+		}
+
+		handleStateChange() {
+			if(this.playing)
+				this.played = true;
+
+			super.handleStateChange();
+		}
+
+		stop () {
+			this.audio.pause();
+			this.audio = null;
+		}
+
+		get playing():boolean {
+			return this.audio != null && this.audio.duration > 0 && !this.audio.paused;
+		}
+
+		get buffering():boolean {
+			return this.audio != null && (!this.played || this.audio.readyState < this.audio.HAVE_FUTURE_DATA);
+		}
+
+		toggle () {
+			this.playing ? this.stop() : this.play();
+		}
+
+	}
+
+	export class HLS extends VideoElement {
+
+		constructor (options:Object) {
+			var canPlay = document.createElement('video').canPlayType('application/vnd.apple.mpegURL');
+			if (!canPlay) {
+				throw new Error('Device does not support HLS');
+			}
+			super(options)
 		}
 
 	}
@@ -168,6 +242,35 @@ export module Radio {
 		unload () {	
 			this.sub.stop();
 			delete this.sub;
+		}
+
+	}
+
+
+	export class Detector { 
+
+		static getBestPlayer (options:any) : Player {
+
+			try {
+				if ('hls' in options) {
+					return new HLS(options.hls);
+				}
+			} catch (e) {}
+
+			try {
+				if ('icecast' in options) {
+					return new Icecast(options.icecast);
+				}
+			} catch (e) {}
+
+			throw new Error('No supported player type. Browser not supported?')
+
+		}
+
+		static getBestMetadata (options:any) {
+
+			return 
+
 		}
 
 	}

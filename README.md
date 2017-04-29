@@ -22,11 +22,14 @@ There are currently two metadata libraries. The first is plain JSON (name Insani
 
 	{
 		"nowPlaying": {
-			"song": "They Can't Take That Away From Me",
-			"artist": "Fred Astaire",
+			"song": "Mr. Brightside",
+			"artist": "The Killers",
 			"external_id": 24716739,
 			"nerve_id": 7084,
-			"album_art": null
+			"album_art": "https://i.scdn.co/image/ac68a9e4a867ec3ce8249cd90a2d7c73755fb487" | null,
+			"external_urls": {
+				"spotify": "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp"
+			} | null
 		},
 		"currentShow": {
 			"dayOfTheWeek": "friday",
@@ -35,6 +38,8 @@ There are currently two metadata libraries. The first is plain JSON (name Insani
 		},
 		"now": "2017-04-28T00:45:14+0100"
 	}
+
+`external_id` and `nerve_id` can be empty or missing - they're Insanity-specific metadata. 
 
 The second is InsanityStreamAPI. That uses Nchan (an NGINX module) that can push realtime updates to thousands of clients at a time. Individual data chunks are the same format as above. 
 

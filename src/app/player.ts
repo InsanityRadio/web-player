@@ -15,13 +15,17 @@ export class Player {
 
 	constructor (private change:ChangeDetectorRef) {
 
-		this.player = new Radio.Icecast({
-			path: 'https://insanityradio.com/listen/get_current_stream.mp3'
+		this.player = Radio.Detector.getBestPlayer({
+			/* hls: {
+				manifest: 'http://10.32.0.126/hls/aud_hi.m3u8'
+			}, */
+			icecast: {
+				path: 'https://insanityradio.com/listen/get_current_stream.mp3'
+			}
 		});
 
-		var webkit = 'WebkitAppearance' in document.documentElement.style;
 
-		this.presentationDelay = webkit ? 8000 : 5000;
+		this.presentationDelay = this.player.presentationDelay;
 
 		this.player.stateChange(() => {
 			console.log("State Change!")

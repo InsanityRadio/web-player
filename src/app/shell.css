@@ -89,7 +89,28 @@ a.share.app:hover {
 	overflow: hidden;
 }
 
+.flexbox {
+	display: flex;
+}
+
 artwork {
 	display: block;
+	flex: 1;
+}
 
+.history {
+	display: block;
+	flex: 0;
+	width: 400px;
+	min-width: 400px;
+}
+
+@media screen and (max-width: 500px) {
+	.flexbox {
+		display: block;
+	}
+	.history {
+		min-width: auto;
+		width: 100%;
+	}
 }
