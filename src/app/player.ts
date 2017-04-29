@@ -40,6 +40,7 @@ export class Player {
 			&&!(/OPiOS/).test(userAgent)
 			&&!(/mercury/).test(userAgent)) {
 
+			// this.player.stop()
 			return;
 		}
 
