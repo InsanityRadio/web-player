@@ -32,6 +32,18 @@ export class Player {
 			change.detectChanges()
 		});
 
+		var userAgent = window.navigator.userAgent;
+		// Are we iOS?
+		if ( (/(iPad|iPhone|iPod)/gi).test(userAgent)
+			&&!(/CriOS/).test(userAgent)
+			&&!(/FxiOS/).test(userAgent)
+			&&!(/OPiOS/).test(userAgent)
+			&&!(/mercury/).test(userAgent)) {
+
+			return;
+		}
+
+		// Autoplay on every other platform (iOS will ungracefully not autoplay)
 		this.player.play()
 
 	}
