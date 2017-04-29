@@ -1,7 +1,16 @@
 import {HTTP} from './http';
+
 declare var Audio:any;
 
 var NchanSubscriber = require('../NchanSubscriber.js');
+
+function parseDate(date) {
+	const parsed = Date.parse(date);
+	if (!isNaN(parsed)) {
+		return new Date(parsed);
+	}
+	return new Date(Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' ')));
+}
 
 export module Radio {
 
@@ -83,7 +92,7 @@ export module Radio {
 		}
 
 		play () {
-			var path = this.options.path + (this.options.path.indexOf("?") != -1 ? '&' : '?') + new Date().getTime();
+			var path = this.options.path + (this.options.path.indexOf("?") != -1 ? '&' : '?') + Date.now();
 			this.played = false;
 
 			if(this.audio != null)
@@ -134,7 +143,7 @@ export module Radio {
 		}
 
 		play () {
-			var path = this.options.manifest + (this.options.manifest.indexOf("?") != -1 ? '&' : '?') + new Date().getTime();
+			var path = this.options.manifest + (this.options.manifest.indexOf("?") != -1 ? '&' : '?') + Date.now()
 			this.played = false;
 
 			if(this.audio != null)
@@ -207,7 +216,7 @@ export module Radio {
 
 		update (http:HTTP.Request, callback:(response) => void) {
 			var data = JSON.parse(http.responseText)
-			data.now = new Date(data.now).getTime()
+			data.now = parseDate(data.now).getTime()
 			callback(data);
 		}
 
@@ -240,7 +249,7 @@ export module Radio {
 
 		update (message:any, callback:(response) => void) {
 			var data = JSON.parse(message)
-			data.now = new Date(data.now).getTime()
+			data.now = parseDate(data.now).getTime()
 			callback(data);
 		}
 

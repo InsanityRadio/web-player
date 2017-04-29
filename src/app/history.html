@@ -1,6 +1,6 @@
 <div class="history">
 	<div class="song-container" *ngFor="let row of history()">
-		<table *ngIf="!isNaN(row.now)">
+		<table>
 			<tr>
 				<td class="a" rowspan=2>{{ row.now | date:'HH:mm' }}</td>
 				<td class="b">{{ row.nowPlaying.song }}</td>
