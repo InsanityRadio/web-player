@@ -4,7 +4,6 @@ import {OnsNavigator} from 'angular2-onsenui';
 import {Radio} from './radio';
 
 declare var RemoteCommand:any;
-declare var cordova:any;
 
 @Component({
 	selector: 'player',
@@ -37,7 +36,8 @@ export class Player {
 
 		var userAgent = window.navigator.userAgent;
 		// Are we on a mobile browser?
-		if (cordova.platformId == "browser" && ((/(iPad|iPhone|iPod)/gi).test(userAgent)
+		console.log('Checking mobile target...', window['cordova'])
+		if ((!window['cordova'] || window['cordova'].platformId == "browser") && ((/(iPad|iPhone|iPod)/gi).test(userAgent)
 			|| (/CriOS/).test(userAgent)
 			|| (/FxiOS/).test(userAgent)
 			|| (/OPiOS/).test(userAgent)
