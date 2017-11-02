@@ -6,6 +6,9 @@ import {Artwork} from './artwork';
 
 import {Radio} from './radio';
 
+declare var NowPlaying:any;
+
+
 @Component({
 	selector: 'metadata',
 	template: require('./metadata.html'),
@@ -124,6 +127,13 @@ export class Metadata {
 	getSong () {
 		this.data = this.getSongAt(Date.now() - this.presentationDelay);
 		this.change.detectChanges()
+		if (typeof NowPlaying !== 'undefined') {
+			NowPlaying.set({
+				artwork: this.data.nowPlaying.album_art,
+				artist: this.data.nowPlaying.artist,
+				title: this.data.nowPlaying.song,
+			});
+		}
 	}
 
 	/*

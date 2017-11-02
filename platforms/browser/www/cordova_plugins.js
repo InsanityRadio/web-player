@@ -202,6 +202,52 @@ module.exports = [
         "clobbers": [
             "window.Media"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "id": "cordova-plugin-statusbar.statusbar",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-statusbar/src/browser/StatusBarProxy.js",
+        "id": "cordova-plugin-statusbar.StatusBarProxy",
+        "pluginId": "cordova-plugin-statusbar",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-remotecommand/www/RemoteCommand.js",
+        "id": "cordova-plugin-remotecommand.RemoteCommand",
+        "pluginId": "cordova-plugin-remotecommand",
+        "clobbers": [
+            "window.RemoteCommand"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-remotecommand/src/browser/MRemoteCommand.js",
+        "id": "cordova-plugin-remotecommand.MRemoteCommand",
+        "pluginId": "cordova-plugin-remotecommand",
+        "clobbers": [
+            "window.RemoteCommand"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-nowplaying/www/NowPlaying.js",
+        "id": "cordova-plugin-nowplaying.NowPlaying",
+        "pluginId": "cordova-plugin-nowplaying",
+        "clobbers": [
+            "window.NowPlaying"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-nowplaying/src/browser/MNowPlaying.js",
+        "id": "cordova-plugin-nowplaying.MNowPlaying",
+        "pluginId": "cordova-plugin-nowplaying",
+        "clobbers": [
+            "window.NowPlaying"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -209,7 +255,12 @@ module.exports.metadata =
 {
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-file": "4.3.1",
-    "cordova-plugin-media": "2.4.1"
+    "cordova-plugin-media": "2.4.1",
+    "cordova-plugin-statusbar": "2.2.2",
+    "nl.kingsquare.cordova.background-audio": "1.0.1",
+    "cordova-plugin-remotecommand": "1.0.0",
+    "cordova-plugin-nowplaying": "1.0.0",
+    "cordova-plugin-console": "1.0.6"
 }
 // BOTTOM OF METADATA
 });

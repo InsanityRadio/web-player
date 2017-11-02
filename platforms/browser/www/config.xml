@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.insanityradio.logs" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>com.insanityradio.logs</name>
+    <name>Insanity Radio</name>
     <description />
-    <author />
+    <author email="computing@insanityradio.com" />
     <access origin="*" />
     <content src="index.html" />
     <preference name="ErrorUrl" value="" />
@@ -18,7 +18,7 @@
     <preference name="Orientation" value="default" />
     <preference name="monaca:DisableCookie" value="false" />
     <preference name="monaca:AndroidIsPackageNameSeparate" value="false" />
-    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="EnableViewportScale" value="false" />
@@ -33,5 +33,6 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="ios-XCBuildConfiguration-TARGETED_DEVICE_FAMILY" value="1,2" />
 </widget>

@@ -1,6 +1,7 @@
 import {HTTP} from './http';
 
 declare var Audio:any;
+declare var Media:any;
 
 var NchanSubscriber = require('../NchanSubscriber.js');
 
@@ -130,6 +131,62 @@ export module Radio {
 		}
 
 	}
+
+	export class Native extends Player {
+
+		private audio:any;
+		private played:boolean = false;
+
+		constructor (options:Object) {
+			super(options);
+			this.audio = null;
+
+			var webkit = 'WebkitAppearance' in document.documentElement.style;
+			var gecko = 'MozAppearance' in document.documentElement.style;
+			this.presentationDelay = webkit ? 10000 : (gecko ? 3000 : 5000);
+
+		}
+
+		play () {
+			var path = this.options.path + (this.options.path.indexOf("?") != -1 ? '&' : '?') + Date.now();
+			this.played = false;
+
+			if(this.audio != null)
+				this.stop();
+
+			var handler = (a) => this.handleStateChange();
+
+			this.audio = new Media(path, handler, handler, handler)
+			this.audio.play({ playAudioWhenScreenIsLocked : true });
+		}
+
+		handleStateChange() {
+			if(this.playing)
+				this.played = true;
+
+			super.handleStateChange();
+		}
+
+		stop () {
+			this.audio.stop();
+			this.audio.release();
+			this.audio = null;
+		}
+
+		get playing():boolean {
+			return this.audio != null && this.audio.state == Media.MEDIA_RUNNING;
+		}
+
+		get buffering():boolean {
+			return this.audio != null && this.audio.state == Media.MEDIA_STARTING;
+		}
+
+		toggle () {
+			this.playing ? this.stop() : this.play();
+		}
+
+	}
+
 
 	export class VideoElement extends Player {
 
@@ -264,6 +321,12 @@ export module Radio {
 	export class Detector { 
 
 		static getBestPlayer (options:any) : Player {
+
+			try {
+				if (typeof Media !== 'undefined') {
+					return new Native(options.icecast);
+				}
+			} catch (e) {}
 
 			try {
 				if ('hls' in options) {

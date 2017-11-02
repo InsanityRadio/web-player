@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.insanityradio.logs" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
-    <name>com.insanityradio.logs</name>
+    <name>Insanity Radio</name>
     <description />
-    <author />
+    <author email="computing@insanityradio.com" />
     <access origin="*" />
     <content src="index.html" />
     <preference name="loglevel" value="DEBUG" />
@@ -21,7 +21,7 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="EnableViewportScale" value="false" />
@@ -36,6 +36,7 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -101,4 +102,7 @@
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.1.2" />
     <engine name="browser" spec="~4.1.0" />
+    <plugin name="cordova-plugin-media" spec="~2.4.1" />
+    <plugin name="cordova-plugin-file" spec="~4.3.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.2.2" />
 </widget>

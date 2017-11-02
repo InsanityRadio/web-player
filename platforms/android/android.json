@@ -19,6 +19,10 @@
                         {
                             "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -56,6 +60,21 @@
         },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.example.helloworld"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "nl.kingsquare.cordova.background-audio": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-remotecommand": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-nowplaying": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
         }
     },
     "dependent_plugins": {},
@@ -248,11 +267,40 @@
             "clobbers": [
                 "window.Media"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "id": "cordova-plugin-remotecommand.RemoteCommand",
+            "file": "plugins/cordova-plugin-remotecommand/www/RemoteCommand.js",
+            "pluginId": "cordova-plugin-remotecommand",
+            "clobbers": [
+                "window.RemoteCommand"
+            ]
+        },
+        {
+            "id": "cordova-plugin-nowplaying.NowPlaying",
+            "file": "plugins/cordova-plugin-nowplaying/www/NowPlaying.js",
+            "pluginId": "cordova-plugin-nowplaying",
+            "clobbers": [
+                "window.NowPlaying"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-compat": "1.1.0",
         "cordova-plugin-file": "4.3.1",
-        "cordova-plugin-media": "2.4.1"
+        "cordova-plugin-media": "2.4.1",
+        "cordova-plugin-statusbar": "2.2.2",
+        "nl.kingsquare.cordova.background-audio": "1.0.1",
+        "cordova-plugin-remotecommand": "1.0.0",
+        "cordova-plugin-nowplaying": "1.0.0",
+        "cordova-plugin-console": "1.0.6"
     }
 }

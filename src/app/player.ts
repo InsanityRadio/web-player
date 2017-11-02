@@ -3,6 +3,9 @@ import {OnsNavigator} from 'angular2-onsenui';
 
 import {Radio} from './radio';
 
+declare var RemoteCommand:any;
+declare var cordova:any;
+
 @Component({
 	selector: 'player',
 	template: require('./player.html'),
@@ -33,19 +36,43 @@ export class Player {
 		});
 
 		var userAgent = window.navigator.userAgent;
-		// Are we iOS?
-		if ( (/(iPad|iPhone|iPod)/gi).test(userAgent)
-			&&!(/CriOS/).test(userAgent)
-			&&!(/FxiOS/).test(userAgent)
-			&&!(/OPiOS/).test(userAgent)
-			&&!(/mercury/).test(userAgent)) {
+		// Are we on a mobile browser?
+		if (cordova.platformId == "browser" && ((/(iPad|iPhone|iPod)/gi).test(userAgent)
+			|| (/CriOS/).test(userAgent)
+			|| (/FxiOS/).test(userAgent)
+			|| (/OPiOS/).test(userAgent)
+			|| (/mercury/).test(userAgent)
+			|| (/Mobile Safari/).test(userAgent))) {
 
 			// this.player.stop()
+			console.log('Not autoplaying, in browser')
 			return;
 		}
 
-		// Autoplay on every other platform (iOS will ungracefully not autoplay)
+		console.log('On device, registering hooks and autoplaying')
+		if (typeof RemoteCommand !== 'undefined') {
+			this.hookRemoteCommand();
+		}
+
+		// Autoplay on every other platform (iOS/Android will ungracefully not autoplay)
 		this.player.play()
+
+	}
+
+	hookRemoteCommand () {
+
+		RemoteCommand.enabled('nextTrack', false);
+		RemoteCommand.enabled('previousTrack', false);
+
+		RemoteCommand.on('command', function (command) { 
+
+			console.log('received command: ', command)
+			switch (command) {
+				case 'play': this.player.play(); break;
+				case 'pause': this.player.stop(); break;
+			}
+
+		});
 
 	}
 

@@ -8,16 +8,31 @@
     },
     "installed_plugins": {
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.example.helloworld"
+            "PACKAGE_NAME": "com.insanityradio.logs"
         },
         "cordova-plugin-media": {
             "MICROPHONE_USAGE_DESCRIPTION": " ",
-            "PACKAGE_NAME": "com.example.helloworld"
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "nl.kingsquare.cordova.background-audio": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-remotecommand": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-nowplaying": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.insanityradio.logs"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.example.helloworld"
+            "PACKAGE_NAME": "com.insanityradio.logs"
         }
     }
 }

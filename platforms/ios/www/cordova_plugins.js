@@ -188,6 +188,46 @@ module.exports = [
         "clobbers": [
             "window.Media"
         ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
+    },
+    {
+        "id": "cordova-plugin-remotecommand.RemoteCommand",
+        "file": "plugins/cordova-plugin-remotecommand/www/RemoteCommand.js",
+        "pluginId": "cordova-plugin-remotecommand",
+        "clobbers": [
+            "window.RemoteCommand"
+        ]
+    },
+    {
+        "id": "cordova-plugin-nowplaying.NowPlaying",
+        "file": "plugins/cordova-plugin-nowplaying/www/NowPlaying.js",
+        "pluginId": "cordova-plugin-nowplaying",
+        "clobbers": [
+            "window.NowPlaying"
+        ]
+    },
+    {
+        "id": "cordova-plugin-console.console",
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "pluginId": "cordova-plugin-console",
+        "clobbers": [
+            "console"
+        ]
+    },
+    {
+        "id": "cordova-plugin-console.logger",
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "pluginId": "cordova-plugin-console",
+        "clobbers": [
+            "cordova.logger"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -195,7 +235,12 @@ module.exports.metadata =
 {
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-file": "4.3.1",
-    "cordova-plugin-media": "2.4.1"
+    "cordova-plugin-media": "2.4.1",
+    "cordova-plugin-statusbar": "2.2.2",
+    "nl.kingsquare.cordova.background-audio": "1.0.1",
+    "cordova-plugin-remotecommand": "1.0.0",
+    "cordova-plugin-nowplaying": "1.0.0",
+    "cordova-plugin-console": "1.0.6"
 };
 // BOTTOM OF METADATA
 });

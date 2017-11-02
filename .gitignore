@@ -1,3 +1,4 @@
 node_modules
 classic
 www/classic
+.DS_Store

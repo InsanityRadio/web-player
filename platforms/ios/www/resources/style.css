@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+* {
+	font-family: "Josefin Sans", "Helvetica Neue", "Arial", "Verdana", sans-serif;
+	font-size: 10pt;
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+}
+
+#header {
+	background: #222;
+	color: #999;
+	line-height: 50px;
+	vertical-align: middle;
+	width: 100%;
+}
+
+#header img {
+	opacity: 0.3;
+	vertical-align: middle;
+	padding: 0px 5px 5px 10px;
+}
+
+#bar {
+	background: url(texture.jpg); /* text.jpg */
+	background-size: cover;
+	margin-top: 0px;
+	height: 130px;
+}
+
+#logo {
+	float: left;
+	margin: 25px 20px;
+}
+
+#controls {
+	margin: 0px;
+	float: right;
+	width: 70px;
+	height: 130px;
+}
+
+#controls button#go {
+	background: url(go.svg) #FFF;
+	background-size: 100%;
+	border: none;
+	border-radius: 100%;
+	cursor: pointer;
+	opacity: 0.9;
+	transition: 0.05s all;
+	width: 40px;
+	height: 40px;
+	margin: 48px 0 0 0;
+}
+
+#controls button#go:hover {
+	opacity: 1;
+}
+
+#vu {
+	height: 80px;
+	margin: 0 0;
+}
+
+.vu {
+	background: #FFF;
+	height: 100px;
+	width: 5px;
+}
+
+a.share, input.share, a.contrast {
+	border: none;
+	color: #F00;
+	float: right;
+	background: #000;
+	position: relative;
+	width: 30px;
+	height: 50px;
+	transition: background-color 0.08s;
+}
+a.share.facebook {
+	background: #3C5A9A url(http://cc.dev.index.hm/theme/cc/images/fb.svg) no-repeat center center;
+	background-size: 18px;
+}
+
+a.share.facebook:hover {
+	background-color: #264380;
+}
+
+a.share.twitter {
+	background: #4099FF url(http://cc.dev.index.hm/theme/cc/images/tw.svg) no-repeat center center;
+	background-size: 17px;
+}
+
+a.share.twitter:hover {
+	background-color: #207BE3;
+}
+
+a.share.email {
+	background: #C00 url(http://cc.dev.index.hm/theme/cc/images/e.svg) no-repeat center center;
+	background-size: 15px;
+}
+
+a.share.email:hover {
+	background-color: #A00;
+}
+
+a.share.app {
+	background-color: #222;
+	text-align: center;
+	color: #FFF;
+}
+a.share.app i {
+	position: relative;
+	top: 2px;
+}
+a.share.app:hover {
+	background-color: #000;
+}
+
+
+.row {
+	background: #222;
+	color: #FFF;
+	font-size: 11pt;
+	padding: 12px 10px 10px;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+
+}
+
+.row b {
+	background: #FF8229;
+	color: #000;
+	margin-right: 10px;
+	padding: 3px 5px 1px;
+	position: relative;
+	top: -1px;
+}
+
+.row p {
+	margin-top: 10px;
+}
+
+.row p span {
+	color: #999;
+}
+
+#video {
+	background: #000;
+	height: 300px;
+}
+
+#artwork {
+	background: #000; 
+	background-size: cover;
+	height: 100vw;
+	max-height: calc(100vh - 240px);
+	overflow: hidden;
+	text-align: center;
+	width: 100vw;
+}
+
+#artwork img {
+	height: 100%;
+}
+
+
+/* Dynamic styles */
+
+body.audio #video {
+	display: none;
+}
+
+body.audio #artwork {
+	display: block;
+}

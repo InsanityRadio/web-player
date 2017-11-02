@@ -22,5 +22,45 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@2.2.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "nl.kingsquare.cordova.background-audio": {
+        "source": {
+            "type": "registry",
+            "id": "nl.kingsquare.cordova.background-audio"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-remotecommand": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-remotecommand"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-nowplaying": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-nowplaying"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
