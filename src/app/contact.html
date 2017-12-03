@@ -1,0 +1,19 @@
+<div class="contact-form">
+
+	<ons-toolbar>
+		<div class="center">Text The Studio</div>
+		<div class="right">
+			<ons-toolbar-button (click)="send()">
+				<i class="fa fa-paper-plane"></i>
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+	<br /><br />
+
+	<img src="https://insanityradio.com/res/monkey.svg" class="monkey" />
+	<ons-input style="width: 100%" placeholder="Your Name" [(value)]="name"></ons-input>
+	<textarea [(ngModel)]="message"></textarea>
+
+	<p><b>{{remaining()}}</b> characters remaining</p>
+
+</div>

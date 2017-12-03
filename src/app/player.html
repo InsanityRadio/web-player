@@ -1,10 +1,14 @@
 <div class="content">
 	<img id="logo" src="../public/resources/vec.svg" height=70 />
 	<div id="controls">
-		<button id="go" (click)="toggle()">
-			<i *ngIf="!playing() && !buffering()" class="fa fa-play"></i>
-			<i *ngIf="buffering()" class="fa fa-ellipsis-h"></i>
-			<i *ngIf="!buffering() && playing()" class="fa fa-pause"></i>
+		<button id="video" [hidden]="!metadata.hasVideo()" class="control" (click)="video()">
+			<i *ngIf="!isVideo()" title="Play Video" class="fa fa-video-camera"></i>
+			<i *ngIf="isVideo()" title="Stop Video" class="fa fa-eye-slash"></i>
+		</button>
+		<button id="go" class="control" (click)="toggle()">
+			<i *ngIf="!playing() && !buffering()" title="Play" class="fa fa-play"></i>
+			<i *ngIf="buffering()" title="Hang on, I'm buffering..." class="fa fa-ellipsis-h"></i>
+			<i *ngIf="!buffering() && playing()" title="Stop" class="fa fa-pause"></i>
 		</button>
 	</div>
 </div>

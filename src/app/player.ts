@@ -1,6 +1,8 @@
-import {Component, ChangeDetectorRef} from '@angular/core';
+import {Component, ChangeDetectorRef, Input, OnInit} from '@angular/core';
 import {OnsNavigator} from 'angular2-onsenui';
 
+import {Artwork} from './artwork';
+import {Metadata} from './metadata';
 import {Radio} from './radio';
 
 declare var RemoteCommand:any;
@@ -10,29 +12,37 @@ declare var RemoteCommand:any;
 	template: require('./player.html'),
 	styles: [require('./player.css')]
 })
-export class Player {
+export class Player implements OnInit {
+
+	@Input() artwork:Artwork;
+	@Input() metadata:Metadata;
 
 	player:any;
 	presentationDelay:number = 0;
 
 	constructor (private change:ChangeDetectorRef) {
 
-		this.player = Radio.Detector.getBestPlayer({
-			/* hls: {
-				manifest: 'http://10.32.0.126/hls/aud_hi.m3u8'
-			}, */
-			icecast: {
-				path: 'https://insanityradio.com/listen/get_current_stream.mp3'
-			}
-		});
 
+	}
 
-		this.presentationDelay = this.player.presentationDelay;
+	isVideo () {
+		return !(this.player == null || !this.player.isVideo());
+	}
 
-		this.player.stateChange(() => {
-			console.log("State Change!")
-			change.detectChanges()
-		});
+	video () {
+		var isPlaying = this.playing;
+		this.initPlayer(!this.isVideo());
+		if (isPlaying) {
+			this.player.play();
+		}
+	}
+
+	ngOnInit () {
+
+		console.log(this.artwork);
+
+		var video = false;
+		this.initPlayer(video);
 
 		var userAgent = window.navigator.userAgent;
 		// Are we on a mobile browser?
@@ -56,6 +66,37 @@ export class Player {
 
 		// Autoplay on every other platform (iOS/Android will ungracefully not autoplay)
 		this.player.play()
+
+	}
+
+	initPlayer (video:boolean) {
+
+		if (this.player) {
+			this.player.stop();
+			this.player.unload();
+		}
+
+		this.player = Radio.Detector.getBestPlayer({
+			hls: video ? {
+				manifest: 'https://stream.cor.insanityradio.com/manifest/hls/video.m3u8',
+				container: this.artwork.video.nativeElement
+			} : {
+				manifest: 'https://stream.cor.insanityradio.com/insanity/hls/insanity.m3u8'
+			},
+			icecast: {
+				//path: 'https://insanityradio.com/listen/get_current_stream.mp3'
+				path: 'https://stream.cor.insanityradio.com/insanity320.mp3'
+			}
+		});
+
+		this.artwork.useVideo = this.isVideo();
+
+		this.presentationDelay = this.player.presentationDelay;
+
+		this.player.stateChange((e) => {
+			console.log("State Change!", e)
+			this.change.detectChanges()
+		});
 
 	}
 

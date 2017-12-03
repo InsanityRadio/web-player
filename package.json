@@ -2,11 +2,15 @@
   "name": "InsanityPlayer",
   "version": "0.0.0",
   "description": "A free radio player app",
+  "scripts": {
+    "dist": "webpack --env=dist --config webpack.prod.config.js"
+  },
   "dependencies": {
     "@angular/common": "2.4.3",
     "@angular/compiler": "2.4.3",
     "@angular/compiler-cli": "2.4.3",
     "@angular/core": "2.4.3",
+    "@angular/forms": "^2.4.3",
     "@angular/http": "2.4.3",
     "@angular/platform-browser": "2.4.3",
     "@angular/platform-browser-dynamic": "2.4.3",
@@ -22,6 +26,7 @@
     "css-loader": "0.23.1",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.9.0",
+    "fsevents": "^1.1.2",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "2.22.0",
     "null-loader": "0.1.1",

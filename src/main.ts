@@ -6,11 +6,13 @@ require('onsenui/css/onsenui.css');
 import {enableProdMode, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 import {OnsenModule} from 'angular2-onsenui';
 
 import {Insanity} from './app/app';
 import {Artwork} from './app/artwork';
 import {Shell} from './app/shell';
+import {ContactForm} from './app/contact';
 import {Player} from './app/player';
 import {Metadata} from './app/metadata';
 import {SongHistory} from './app/history';
@@ -26,6 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 	imports: [
 		OnsenModule, // has BrowserModule internally
 		HttpModule,
+		FormsModule
 	],
 	declarations: [
 		Insanity,
@@ -33,13 +36,15 @@ if (process.env.NODE_ENV === 'production') {
 		Player,
 		Metadata,
 		Artwork,
-		SongHistory
+		SongHistory,
+		ContactForm
 	],
 	entryComponents: [
 		Shell,
 		Player,
 		Metadata,
-		Artwork
+		Artwork,
+		ContactForm
 	],
 	bootstrap: [
 		Insanity,

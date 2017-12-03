@@ -1,9 +1,11 @@
 import {HTTP} from './http';
 
+
 declare var Audio:any;
 declare var Media:any;
 
 var NchanSubscriber = require('../NchanSubscriber.js');
+var Hls = require('../Hls.js');
 
 function parseDate(date) {
 	const parsed = Date.parse(date);
@@ -17,7 +19,7 @@ export module Radio {
 
 	export abstract class Player {
 
-		protected stateChangeListeners:Array<(player:Player) => void> = [];
+		protected stateChangeListeners:Array<(player:Player, e?:any) => void> = [];
 
 		presentationDelay : number;
 
@@ -31,12 +33,18 @@ export module Radio {
 
 		metadata () {}
 
-		stateChange (handler:(player:Player) => void) {
+		unload () {}
+
+		stateChange (handler:(player:Player, e?:any) => void) {
 			this.stateChangeListeners.push(handler);
 		}
 
-		handleStateChange() {
-			this.stateChangeListeners.forEach((a) => a(this));
+		handleStateChange(e) {
+			this.stateChangeListeners.forEach((a, _) => a(this, e));
+		}
+
+		isVideo () {
+			return false;
 		}
 
 	}
@@ -79,7 +87,7 @@ export module Radio {
 	*/
 	export class Icecast extends Player {
 
-		private audio:any;
+		protected audio:any;
 		private played:boolean = false;
 
 		constructor (options:Object) {
@@ -100,17 +108,17 @@ export module Radio {
 				this.stop();
 
 			this.audio = new Audio(path);
-			this.audio.addEventListener("playing", () => this.handleStateChange());
-			this.audio.addEventListener("pause", () => this.handleStateChange());
-			this.audio.addEventListener("stalled", () => this.handleStateChange());
+			this.audio.addEventListener("playing", (e) => this.handleStateChange(e));
+			this.audio.addEventListener("pause", (e) => this.handleStateChange(e));
+			this.audio.addEventListener("stalled", (e) => this.handleStateChange(e));
 			this.audio.play();
 		}
 
-		handleStateChange() {
+		handleStateChange(e) {
 			if(this.playing)
 				this.played = true;
 
-			super.handleStateChange();
+			super.handleStateChange(e);
 		}
 
 		stop () {
@@ -154,17 +162,17 @@ export module Radio {
 			if(this.audio != null)
 				this.stop();
 
-			var handler = (a) => this.handleStateChange();
+			var handler = (a) => this.handleStateChange(a);
 
 			this.audio = new Media(path, handler, handler, handler)
 			this.audio.play({ playAudioWhenScreenIsLocked : true });
 		}
 
-		handleStateChange() {
+		handleStateChange(e) {
 			if(this.playing)
 				this.played = true;
 
-			super.handleStateChange();
+			super.handleStateChange(e);
 		}
 
 		stop () {
@@ -190,16 +198,21 @@ export module Radio {
 
 	export class VideoElement extends Player {
 
-		private audio:any;
-		private played:boolean = false;
+		protected audio:any;
+		protected played:boolean = false;
 
 		constructor (options:Object) {
 			super(options);
 			this.audio = null;
-			this.presentationDelay = 15000;
+			this.presentationDelay = 30000;
+		}
+
+		isVideo () {
+			return this.options.container != null;
 		}
 
 		play () {
+			
 			var path = this.options.manifest + (this.options.manifest.indexOf("?") != -1 ? '&' : '?') + Date.now()
 			this.played = false;
 
@@ -212,20 +225,22 @@ export module Radio {
 			this.audio.autoPlay = true;
 			this.audio.setAttribute('playsinline', '1');
 
-			this.audio.addEventListener("playing", () => this.handleStateChange());
-			this.audio.addEventListener("pause", () => this.handleStateChange());
-			this.audio.addEventListener("stalled", () => this.handleStateChange());
+			this.audio.addEventListener("playing", (e) => this.handleStateChange(e));
+			this.audio.addEventListener("pause", (e) => this.handleStateChange(e));
+			this.audio.addEventListener("stalled", (e) => this.handleStateChange(e));
 			this.audio.play();
-
-			console.log('hello!!!')
 
 		}
 
-		handleStateChange() {
+
+		handleStateChange(e) {
 			if(this.playing)
 				this.played = true;
 
-			super.handleStateChange();
+			super.handleStateChange(e);
+		}
+
+		unload () {
 		}
 
 		stop () {
@@ -249,12 +264,80 @@ export module Radio {
 
 	export class HLS extends VideoElement {
 
-		constructor (options:Object) {
-			var canPlay = document.createElement('video').canPlayType('application/vnd.apple.mpegURL');
-			if (!canPlay) {
-				throw new Error('Device does not support HLS');
+		protected ready:boolean = false;
+		protected hls:any;
+		protected waiting:boolean = false;
+
+		constructor (options) {
+
+			super(options);
+			this.ready = false;
+
+			if (this.options.container) {
+				this.audio = this.options.container;
+			} else {
+				this.audio = document.createElement('video');
+
+				// Firefox doesn't support HE-AAC on Mac for some reason. Bug 1387127
+				// It plays it as a AAC-LC which sounds worse than DAB.
+				let navi = navigator.userAgent.toLowerCase();
+				if (navi.indexOf('firefox') > -1 && navi.indexOf('macintosh') > -1) {
+					throw new Error('HLS with audio does not work on Firefox on macOS');
+				}
+
 			}
-			super(options)
+
+			this.hls = new Hls({
+				maxBufferLength: 60,
+				fragLoadingMaxRetry: 99
+			});
+
+			this.hls.loadSource(this.options.manifest);
+			this.hls.attachMedia(this.audio);
+			this.hls.on(Hls.Events.MANIFEST_PARSED, function () {
+				this.ready = true;
+				this.playIfWaiting();
+			}.bind(this));
+
+		}
+
+		play () {
+
+			if (!this.ready) { 
+				this.waiting = true;
+				return;
+			}
+
+			this.played = false;
+
+			//if(this.audio != null)
+			//	this.stop();
+
+			this.audio.autoPlay = true;
+			this.audio.setAttribute('playsinline', '1');
+
+			this.audio.addEventListener("playing", (e) => this.handleStateChange(e));
+			this.audio.addEventListener("pause", (e) => this.handleStateChange(e));
+			this.audio.addEventListener("stalled", (e) => this.handleStateChange(e));
+			this.audio.play();
+
+		}
+
+		unload () {
+			this.hls.detachMedia();
+			this.hls.destroy();
+		}
+
+		stop () {
+			this.audio.pause();
+		}
+
+		playIfWaiting () {
+			console.log('erm')
+			if (this.waiting) {
+				console.log('about to play')
+				this.play();
+			}
 		}
 
 	}

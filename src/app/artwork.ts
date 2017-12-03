@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {OnsNavigator} from 'angular2-onsenui';
 
 @Component({
@@ -8,6 +8,9 @@ import {OnsNavigator} from 'angular2-onsenui';
 })
 export class Artwork {
 	@Input() url:string;
+	@Input() useVideo:boolean;
+
+	@ViewChild('video') video;
 
 	protected defaultImage:string = require('../public/resources/default_artwork.jpg');
 

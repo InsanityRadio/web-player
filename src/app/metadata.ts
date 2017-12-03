@@ -34,6 +34,7 @@ export class Metadata {
 			showName: "Unknown",
 			showPresenters: "Data Not Available"
 		},
+		video: false,
 		now: new Date(0)
 	};
 
@@ -120,6 +121,7 @@ export class Metadata {
 		}
 		this.resetForNew()
 
+		console.log('this is my data', this.data)
 		return closestMatch;
 
 	}
@@ -134,6 +136,11 @@ export class Metadata {
 				title: this.data.nowPlaying.song,
 			});
 		}
+	}
+
+	hasVideo () {
+		console.log('has video?', this.data)
+		return this.data.video;
 	}
 
 	/*

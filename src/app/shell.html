@@ -5,7 +5,7 @@
 	<div class="center">
 	</div>
 	<div class="right">
-		<a class="share email" href="https://insanityradio.com/contact/splash/" target="_blank"></a>
+		<a class="share email" (click)="modal.show()" target="_blank"></a>
 		<a class="share twitter" href="https://twitter.com/insanityradio" target="_blank"></a>
 		<a class="share facebook" href="https://www.facebook.com/insanityradio" target="_blank"></a>
 		<a *ngIf="browser" class="share app" href="https://play.google.com/store/apps/details?id=com.insanityradio.insanityradio&amp;hl=en" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a>
@@ -15,10 +15,14 @@
 </ons-toolbar>
 
 <div class="content">
-	<player #player></player>
+	<player #player [artwork]="artwork" [metadata]="metadata"></player>
 	<metadata #metadata [player]="player" [artwork]="artwork" [presentationDelay]="player.presentationDelay" class="row"></metadata>
 	<div class="flexbox">
 		<artwork #artwork [url]="metadata.data.nowPlaying.album_art"></artwork>
 		<history #history [metadata]="metadata"></history>
 	</div>
 </div>
+
+<ons-dialog animation="default" cancelable #modal>
+	<contact [modal]="modal"></contact>
+</ons-dialog>

@@ -1,0 +1,44 @@
+.contact-form {
+	width: 80vw;
+	max-width: 600px;
+	padding: 10px;
+}
+
+.contact-form h2 {
+	margin: 0;
+	text-align: center;
+}
+
+.contact-form .monkey {
+	position: absolute;
+	top: -20px;
+	opacity: 0.1;
+	height: 300px;
+	z-index: 10001;
+	pointer-events: none;
+	-moz-pointer-events: none;
+}
+
+.contact-form textarea {
+	font-family: "Helvetica Neue", Arial, Verdana, sans-serif;
+	border: 1px solid #CCC;
+	min-height: 50px;
+	padding: 5px;
+	resize: vertical;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+@media screen and (min-height: 500px) {
+	.contact-form textarea {
+		min-height: 200px;
+	}
+}
+
+.contact-form textarea + p {
+	display: block;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+}
