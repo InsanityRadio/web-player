@@ -51,7 +51,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.ts$/,
-      loader: 'ts',
+      loader: 'ts-loader',
       include: path.join(__dirname, 'src'),
 
       query: {
@@ -130,13 +130,21 @@ module.exports = {
         removeComments: true
       }
     }),
-    new webpack.NoErrorsPlugin(),
+    //new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-    new CopyWebpackPlugin([{
-      from: path.join(__dirname, 'src', 'public'),
-      ignore: ['index.html.ejs']
-    }]),
+    new webpack.optimize.UglifyJsPlugin({
+        beautify: false,
+        mangle: false,
+        compress: {
+            warnings: false,
+            screw_ie8: true
+        },
+        comments: false
+    }),
+    //new CopyWebpackPlugin([{
+    //  from: path.join(__dirname, 'src', 'public'),
+    //  ignore: ['index.html.ejs']
+    //}]),
     new ProgressBarPlugin()
   ],
 

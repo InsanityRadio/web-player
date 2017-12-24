@@ -321,7 +321,7 @@ export module Radio {
 			this.audio.addEventListener("playing", (e) => this.handleStateChange(e));
 			this.audio.addEventListener("pause", (e) => this.handleStateChange(e));
 			this.audio.addEventListener("stalled", (e) => this.handleStateChange(e));
-			console.log(this.audio.play());
+			console.log(this.audio.play(), '!');
 
 		}
 
