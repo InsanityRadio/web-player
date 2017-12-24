@@ -1,16 +1,15 @@
 try {
   var path = require('path');
   var os = require('os');
-  var cordovaNodeModules = path.join(os.homedir(), '.cordova', 'node_modules');
 
-  var webpack = require(path.join(cordovaNodeModules, 'webpack'));
-  var HtmlWebpackPlugin = require(path.join(cordovaNodeModules, 'html-webpack-plugin'));
-  var ExtractTextPlugin = require(path.join(cordovaNodeModules, 'extract-text-webpack-plugin'));
-  var CopyWebpackPlugin = require(path.join(cordovaNodeModules, 'copy-webpack-plugin'));
-  var ProgressBarPlugin = require(path.join(cordovaNodeModules, 'progress-bar-webpack-plugin'));
+  var webpack = require('webpack');
+  var HtmlWebpackPlugin = require('html-webpack-plugin');
+  var ExtractTextPlugin = require('extract-text-webpack-plugin');
+  var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+  var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-  var autoprefixer = require(path.join(cordovaNodeModules, 'autoprefixer'));
-  var precss = require(path.join(cordovaNodeModules, 'precss'));
+  var autoprefixer = require('autoprefixer');
+  var precss = require('precss');
 
 } catch (e) {
   throw new Error('Missing Webpack Build Dependencies.');
@@ -57,8 +56,8 @@ module.exports = {
 
       query: {
         presets: [
-          path.join(cordovaNodeModules, 'babel-preset-es2015'),
-          path.join(cordovaNodeModules, 'babel-preset-stage-2')
+          'babel-preset-es2015',
+          'babel-preset-stage-2'
         ],
 
         cacheDirectory: useCache
@@ -141,8 +140,5 @@ module.exports = {
     new ProgressBarPlugin()
   ],
 
-  resolveLoader: {
-    root: cordovaNodeModules
-  }
 };
 

@@ -1,37 +1,37 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
     },
-    "installed_plugins": {
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.example.helloworld"
-        },
-        "cordova-plugin-media": {
-            "PACKAGE_NAME": "com.example.helloworld"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.insanityradio.logs"
-        },
-        "nl.kingsquare.cordova.background-audio": {
-            "PACKAGE_NAME": "com.insanityradio.logs"
-        },
-        "cordova-plugin-remotecommand": {
-            "PACKAGE_NAME": "com.insanityradio.logs"
-        },
-        "cordova-plugin-nowplaying": {
-            "PACKAGE_NAME": "com.insanityradio.logs"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.insanityradio.logs"
-        }
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.example.helloworld"
-        }
+    "cordova-plugin-nowplaying": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
+    },
+    "cordova-plugin-remotecommand": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
+    },
+    "nl.kingsquare.cordova.background-audio": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
     }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.insanityradio.logs"
+    }
+  }
 }
