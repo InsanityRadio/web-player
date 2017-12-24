@@ -310,6 +310,8 @@ export module Radio {
 
 			this.played = false;
 
+			console.log('getting ready to play some stuff')
+
 			//if(this.audio != null)
 			//	this.stop();
 
@@ -319,7 +321,7 @@ export module Radio {
 			this.audio.addEventListener("playing", (e) => this.handleStateChange(e));
 			this.audio.addEventListener("pause", (e) => this.handleStateChange(e));
 			this.audio.addEventListener("stalled", (e) => this.handleStateChange(e));
-			this.audio.play();
+			console.log(this.audio.play());
 
 		}
 

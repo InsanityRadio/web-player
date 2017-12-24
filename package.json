@@ -4,6 +4,7 @@
   "description": "A free radio player app",
   "scripts": {
     "dist": "webpack --env=dist --config webpack.prod.config.js",
+    "dev": "webpack --config webpack.config.js",
     "serve": "webpack-dev-server"
   },
   "dependencies": {
