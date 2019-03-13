@@ -78,13 +78,12 @@ export class Player implements OnInit {
 
 		this.player = Radio.Detector.getBestPlayer({
 			hls: video ? {
-				manifest: 'https://stream.cor.insanityradio.com/manifest/hls/video.m3u8',
+				manifest: 'https://scdnc.insanityradio.com/manifest/hls/video.m3u8',
 				container: this.artwork.video.nativeElement
 			} : {
-				manifest: 'https://stream.cor.insanityradio.com/insanity/hls/insanity.m3u8'
+				manifest: 'https://scdnc.insanityradio.com/dash/hls/insanity/index.m3u8'
 			},
 			icecast: {
-				//path: 'https://insanityradio.com/listen/get_current_stream.mp3'
 				path: 'https://stream.cor.insanityradio.com/insanity320.mp3'
 			}
 		});
