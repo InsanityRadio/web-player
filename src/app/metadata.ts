@@ -121,7 +121,6 @@ export class Metadata {
 		}
 		this.resetForNew()
 
-		console.log('this is my data', this.data)
 		return closestMatch;
 
 	}
@@ -139,7 +138,6 @@ export class Metadata {
 	}
 
 	hasVideo () {
-		console.log('has video?', this.data)
 		return this.data.video;
 	}
 
@@ -177,7 +175,6 @@ export class Metadata {
 			this.getSong()
 		}, interval + 100)
 
-		console.log('setting refresh for ', interval)
 
 	}
 

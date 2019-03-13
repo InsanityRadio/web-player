@@ -280,9 +280,11 @@ export module Radio {
 
 				// Firefox doesn't support HE-AAC on Mac for some reason. Bug 1387127
 				// It plays it as a AAC-LC which sounds worse than DAB.
+				// Safari has a similar effect at the start of every chunk. So fall back to Icecast!
 				let navi = navigator.userAgent.toLowerCase();
-				if (navi.indexOf('firefox') > -1 && navi.indexOf('macintosh') > -1) {
-					throw new Error('HLS with audio does not work on Firefox on macOS');
+				if ((navi.indexOf('firefox') > -1 && navi.indexOf('macintosh') > -1) ||
+						(navi.indexOf('safari') > -1 && navi.indexOf('chrome') == -1)) {
+					throw new Error('HLS with audio does not work on Firefox on macOS, or Safari.');
 				}
 
 			}
@@ -310,6 +312,8 @@ export module Radio {
 
 			this.played = false;
 
+			console.log('getting ready to play some stuff')
+
 			//if(this.audio != null)
 			//	this.stop();
 
@@ -319,7 +323,7 @@ export module Radio {
 			this.audio.addEventListener("playing", (e) => this.handleStateChange(e));
 			this.audio.addEventListener("pause", (e) => this.handleStateChange(e));
 			this.audio.addEventListener("stalled", (e) => this.handleStateChange(e));
-			this.audio.play();
+			console.log(this.audio.play(), '!');
 
 		}
 
@@ -333,9 +337,7 @@ export module Radio {
 		}
 
 		playIfWaiting () {
-			console.log('erm')
 			if (this.waiting) {
-				console.log('about to play')
 				this.play();
 			}
 		}

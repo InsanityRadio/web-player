@@ -1,0 +1,10 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Insanity Radio",
+  "short_name": "Insanity Radio",
+  "version": "com.insanityradio.logs",
+  "icons": [],
+  "orientation": "any",
+  "start_url": "index.html"
+}
