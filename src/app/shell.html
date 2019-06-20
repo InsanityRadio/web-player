@@ -1,11 +1,11 @@
 <ons-toolbar>
 	<div class="left">
-		<img src="../public/resources/cans.svg" height=25 />
+		<a class="share back" (click)="navigateTo('/')" title="Return to the Insanity Radio website"><i class="fa fa-chevron-left"></i></a>
+		<a class="share email link" (click)="modal.show()" target="_blank">Text The Studio</a>
 	</div>
 	<div class="center">
 	</div>
 	<div class="right">
-		<a class="share email" (click)="modal.show()" target="_blank"></a>
 		<a class="share twitter" href="https://twitter.com/insanityradio" target="_blank"></a>
 		<a class="share facebook" href="https://www.facebook.com/insanityradio" target="_blank"></a>
 		<a *ngIf="browser" class="share app" href="https://play.google.com/store/apps/details?id=com.insanityradio.insanityradio&amp;hl=en" target="_blank"><i class="fa fa-android" aria-hidden="true"></i></a>

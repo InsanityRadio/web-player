@@ -1,0 +1,10 @@
+.contact-form {
+	width: 80vw;
+	max-width: 600px;
+	padding: 10px;
+}
+
+.contact-form h2 {
+	margin: 0;
+	text-align: center;
+}

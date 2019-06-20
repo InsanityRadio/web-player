@@ -1,3 +1,4 @@
+
 import {Component, ChangeDetectorRef, Input}  from '@angular/core';
 import {OnsNavigator} from 'angular2-onsenui';
 
@@ -43,6 +44,8 @@ export class Metadata {
 
 	private interval:number = 8000;
 	private total:number = 10;
+
+	private changeTimer:any = null;
 
 	constructor(private change:ChangeDetectorRef) {
 
@@ -100,8 +103,19 @@ export class Metadata {
 		}
 
 		data = this.getSongAt(time)
+
+		this.detectChangesWithTimer()
 		this.change.detectChanges()
 
+	}
+
+	detectChangesWithTimer () {
+		if (this.changeTimer == null) {
+			this.changeTimer = setTimeout(() => {
+				this.change.detectChanges()
+				this.changeTimer = null;
+			}, 100);
+		}
 	}
 
 	/* 

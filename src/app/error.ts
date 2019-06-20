@@ -1,18 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {OnsNavigator} from 'angular2-onsenui';
 
 @Component({
-  selector: 'ons-page[page]',
-  template: require('./error.html'),
-  styles: [require('./error.css')]
+	selector: 'error',
+	template: require('./error.html'),
+	styles: [require('./error.css')]
 })
-export class Error {
-  constructor(private navi : OnsNavigator) {
-  }
+export class ErrorDialog {
 
-  push() {
-    this.navi.element.pushPage(null);
-  }
+	@Input() modal:any;
+
+	constructor(private navi : OnsNavigator) {
+	}
+
 }
-
 

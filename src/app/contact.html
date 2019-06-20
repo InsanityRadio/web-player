@@ -10,9 +10,11 @@
 	</ons-toolbar>
 	<br /><br />
 
+	<p class="error" *ngIf="error != ''">{{ error }}</p>
+
 	<img src="https://insanityradio.com/res/monkey.svg" class="monkey" />
-	<ons-input style="width: 100%" placeholder="Your Name" [(value)]="name"></ons-input>
-	<textarea [(ngModel)]="message"></textarea>
+	<ons-input [disabled]="sending" style="width: 100%" input-id="contact-required-input" placeholder="Your Name" [(value)]="name"></ons-input>
+	<textarea [disabled]="sending" [(ngModel)]="message"></textarea>
 
 	<p><b>{{remaining()}}</b> characters remaining</p>
 

@@ -13,6 +13,7 @@ import {Insanity} from './app/app';
 import {Artwork} from './app/artwork';
 import {Shell} from './app/shell';
 import {ContactForm} from './app/contact';
+import {ErrorDialog} from './app/error';
 import {Player} from './app/player';
 import {Metadata} from './app/metadata';
 import {SongHistory} from './app/history';
@@ -37,14 +38,16 @@ if (process.env.NODE_ENV === 'production') {
 		Metadata,
 		Artwork,
 		SongHistory,
-		ContactForm
+		ContactForm,
+		ErrorDialog
 	],
 	entryComponents: [
 		Shell,
 		Player,
 		Metadata,
 		Artwork,
-		ContactForm
+		ContactForm,
+		ErrorDialog
 	],
 	bootstrap: [
 		Insanity,
